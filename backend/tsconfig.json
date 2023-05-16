@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {    
+    "target": "ES6",      
+    "module": "commonjs",     
+    "rootDir": "./",  
+    "outDir": "./dist",                                   /* Specify an output folder for all emitted files. */
+    "removeComments": true,             
+    "noEmitOnError": true,   
+    "esModuleInterop": true,                
+    "forceConsistentCasingInFileNames": true,    
+    "strict": true,                     
+    /* Completeness */
+    // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
+    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+  }
+}
