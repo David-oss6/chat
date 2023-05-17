@@ -24,9 +24,6 @@ export class SocketServer {
             const socketId = socket.id
             const userSocket: UserSocket = new UserSocket(socket)
             const roomSocket: RoomSocket = new RoomSocket(socket)
-            // const data = await updateNewUser()
-            // socket.emit('update-new-user', data)
-
 
             socket.on('signin', async (newUser: TUser) => {
                 await userSocket.signIn(newUser)
