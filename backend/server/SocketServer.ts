@@ -8,10 +8,8 @@ dotenv.config()
 const secretKey: string = process.env.JWT_KEY!
 
 export class SocketServer {
-    //private readonly httpServer: any   ///   <----- any
     private readonly io
-    constructor(httpServer: any) {  ///   <----- any
-        //this.httpServer = httpServer
+    constructor(httpServer: any) {
         this.io = new Server(httpServer, {
             cors: {
                 origin: '*'
