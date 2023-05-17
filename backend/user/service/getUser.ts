@@ -1,4 +1,3 @@
-import { TUser } from "../domain/types"
 import { MongoDbHandler } from "../repository/MongoDbHandler"
 const mongoHandler = new MongoDbHandler()
 

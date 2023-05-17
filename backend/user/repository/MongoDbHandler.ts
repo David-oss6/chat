@@ -1,7 +1,6 @@
 import { getDb } from "../../database/mongoConnection"
 import { TUser } from "../domain/types"
 
-
 export class MongoDbHandler {
     async findUser(user: TUser) {
         const db = await getDb()
