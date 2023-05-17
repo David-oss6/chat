@@ -1,4 +1,4 @@
-import { App } from "./appRun";
+import { App } from "./app";
 
 try {
 	void new App().start();
