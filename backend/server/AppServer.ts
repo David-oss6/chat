@@ -4,7 +4,8 @@ import express, { Request, Response } from "express";
 import helmet from "helmet";
 import { Server } from 'http'
 import { connectToDb } from "../database/mongoConnection";
-import router from "../routes/verificationRouter";
+import router from "../router/verificationRouter";
+
 
 export class AppServer {
 	private readonly express: express.Express;

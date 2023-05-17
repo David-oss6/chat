@@ -19,7 +19,6 @@ export default function MsgContainer({ pathname }) {
 
     const handleUserJoinedMessage = (location) => {
         const ok = location === pathname ? true : false
-        console.log('ok::::', ok)
         return ok
     }
 

@@ -6,6 +6,8 @@
   font-weight: bolder;
   padding: 0;
   margin: 0;
+  overflow-x: hidden; 
+  overflow-y: auto;
 }
 
 /* INICIO CREAR SALA Y HOME */
@@ -65,9 +67,9 @@ font-weight: bold;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
   margin-top: 0.5rem;
-  width: 13rem;     
+  width: 12rem;     
   list-style: none; 
   background-color: #262728;
   border: 4px;
