@@ -1,10 +1,10 @@
 import { json, urlencoded } from "body-parser";
 import cors from "cors";
-import express, { Request, Response } from "express";
+import express from "express";
 import helmet from "helmet";
 import { Server } from 'http'
 import { connectToDb } from "../database/mongoConnection";
-import router from "../routes/verificationRouter";
+import router from "../router/verificationRouter";
 
 export class AppServer {
 	private readonly express: express.Express;
@@ -34,11 +34,9 @@ export class AppServer {
 					);
 					// eslint-disable-next-line no-console
 					console.log("✋ Press CTRL-C to stop\n");
-
 					resolve();
 				});
 			})
-
 		});
 	}
 }

@@ -1,6 +1,6 @@
 .createRoomModalContainer{
     position: absolute;  
-    width: 12rem;  
+    width: 11rem;  
     top: 5.6rem;
     left: 1rem;
     display: flex;
@@ -22,7 +22,7 @@ background-color: white;
 color: #262728;
 border-radius: 4px;
 padding: 0.3rem 0.5rem;
-width: 12rem;
+width: 11rem;
 height: 2.9rem;
 border: none;
 font-size: large;

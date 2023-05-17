@@ -9,13 +9,14 @@ import './loginSignin.css'
 import axios from 'axios'
 
 export default function LoginSignin() {
-
     const [loginName, setLoginName] = useState("")
     const [loginPass, setLoginPass] = useState("")
     const [signName, setSignName] = useState("")
     const [signPass, setSignPass] = useState("")
     const [warningModal, setWarningModal] = useState(false)
     const [warninbgMsg, setWarningMsg] = useState("")
+
+
 
     const { pathname } = useLocation()
     const login = async () => {
@@ -24,7 +25,7 @@ export default function LoginSignin() {
             pass: loginPass
         }
         axios.post('http://localhost:4000/autentication', user).then(res => console.log(res))
-        socket.emit('login', user)
+        socket.emit('login', user, socket.id)
         socket.on('login-atempt', (isSigned) => {
             if (isSigned) {
                 socket.emit('join-room', { name: 'sala principal' }, 'none', loginName)

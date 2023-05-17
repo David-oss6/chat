@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import { autentication } from "../middlware/autentication";
 const router = express.Router()
 
