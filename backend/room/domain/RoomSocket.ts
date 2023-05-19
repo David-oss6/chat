@@ -8,11 +8,29 @@ import { joinRoom } from '../service/joinRoom'
 import { leaveRoom } from '../service/leaveRoom'
 import { deleteRoomsOnDisconnect } from '../service/deleteRoomsOnDisconnect'
 
-
 export class RoomSocket {
     socket: Socket
     constructor(socket: Socket) {
         this.socket = socket
+    }
+
+    async connect() {
+        this.socket.on('send-msg', async (msg: TMessage) => {
+            await this.updateMessages(msg)
+        })
+
+        this.socket.on('create-room', async (newRoom: TRoom) => {
+            await this.createRoom(newRoom)
+        })
+
+        this.socket.on('delete-room', async (room: TRoom) => {
+            await this.deleteRoom(room)
+        })
+
+        this.socket.on('join-room', async (roomToJoin: TRoom, roomToLeave: string | null, user: string) => {
+            if (roomToLeave) await this.leaveRoom(roomToLeave, user)
+            await this.joinRoom(roomToJoin, user)
+        })
     }
 
     async getRoom(room: string) {
@@ -57,6 +75,7 @@ export class RoomSocket {
             this.socket.emit(`${newRoom.name}-exists`, true)
         }
     }
+
     async deleteRoom(room: TRoom) {
         const rooms = await deleteRoom(room)
         this.socket.broadcast.emit('update-rooms', rooms)

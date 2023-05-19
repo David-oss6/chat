@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { socket } from "../../context/redux/reducer"
 import { useSelector } from "react-redux"
 import './roomList.css'
@@ -8,6 +8,9 @@ import logo from '../../img/room_logo.png'
 import binLogo from '../../img/bin_logo.png'
 import home from '../../img/home.png'
 import WarningModal from "../warningModal/WarningModal"
+import { store } from "../../context/redux/store"
+import { logInOut } from "../../context/redux/actions"
+import axios from "axios"
 
 export default function RoomList({ pathname }) {
     if (pathname !== '/') pathname = pathname.slice(1)
@@ -15,10 +18,10 @@ export default function RoomList({ pathname }) {
     const [creatingRoom, setCreatingRoom] = useState(false)
     const [warning, setWarning] = useState(false)
     const [warningMsg, setWarningMsg] = useState("")
+    const navigate = useNavigate()
 
     const deleteRoom = (room) => {
         const roomToDelete = state.rooms.find(room_two => room_two.name === room.name)
-        console.log(roomToDelete)
         if (roomToDelete.users.length !== 0) {
             setWarningMsg('❌ hay usuarios en la sala')
             setWarning(true)
@@ -31,10 +34,25 @@ export default function RoomList({ pathname }) {
         }
     }
 
-    const joinRoom = (room) => {
-        socket.emit('join-room', room, pathname, state.userName)
-        socket.emit('user-joined-room-message', `/${room.name}`, state.userName)
+    const joinRoom = async (room) => {
+
+        const webToken = localStorage.getItem('token')
+        if (!webToken) store.dispatch(logInOut(false))
+        const isTokenOk = await axios.get('/api/autentication', {
+            headers: { 'Authorization': webToken }
+        }).then((res) => res = res.data.name)
+        console.log(isTokenOk)
+        if (isTokenOk === state.userName) {
+            console.log('entra en true')
+            socket.emit('join-room', room, pathname, state.userName)
+            socket.emit('user-joined-room-message', `/${room.name}`, state.userName)
+        } else {
+            console.log('entra en false')
+            store.dispatch(logInOut(false))
+            navigate('/')
+        }
     }
+
     return <ul className='roomUl'>
         <li
             className="roomLi">

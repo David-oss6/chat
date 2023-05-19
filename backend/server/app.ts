@@ -14,6 +14,7 @@ export class App {
         this.server = new AppServer(port, httpServer);// creacion servidor express (app.ts). Enviamos httpServer para que funcione socket.io
         this.io = new SocketServer(httpServer) //creacion del servidor de socket)
 
+        // await this.io.listen()
         await this.io.connect()
         await this.server.listen();
     }

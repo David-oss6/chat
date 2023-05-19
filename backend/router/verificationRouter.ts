@@ -1,7 +1,10 @@
 import express from "express";
-import { autentication } from "../middlware/autentication";
+import { autentication } from "../controllers/autentication";
+import { getToken } from "../controllers/getToken";
 const router = express.Router()
 
-router.use('/autentication', autentication)
+router.use('/api/autentication', autentication)
+router.use('/api/gettoken', getToken)
+
 
 export default router

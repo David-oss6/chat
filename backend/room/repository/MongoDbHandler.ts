@@ -75,7 +75,13 @@ export class MongoDbHandler {
 
     async deleteRoomsOnDisconnect(userName: string) {
         const db = await getDb()
-        await db.collection('rooms').deleteMany({ owner: userName })
+        await db.collection('rooms').deleteMany({
+            owner: userName,
+            $and: [
+                { users: { $ne: userName } },
+                { users: { $size: 0 } }
+            ]
+        })
         const roomsAfterDelete = await db.collection('rooms').find()
         const listOfRooms: object[] = []
         await roomsAfterDelete?.forEach((room) => {

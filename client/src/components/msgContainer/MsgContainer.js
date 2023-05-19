@@ -18,15 +18,14 @@ export default function MsgContainer({ pathname }) {
     }))
 
     const handleUserJoinedMessage = (location) => {
+        if (location === '/sala principal') location = '/'
         const ok = location === pathname ? true : false
         return ok
     }
 
     socket.on('user-joined-room-message', (location, message) => {
         const ok = handleUserJoinedMessage(location)
-
         if (ok === true) {
-            console.log('entra en OK')
             setWelcomeModal(true)
             setWelcomeMessage(message)
             setTimeout(() => {

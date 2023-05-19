@@ -16,22 +16,22 @@ export default function LoginSignin() {
     const [warningModal, setWarningModal] = useState(false)
     const [warninbgMsg, setWarningMsg] = useState("")
 
-
-
     const { pathname } = useLocation()
     const login = async () => {
+        socket.emit('bla-bla', 'bla-bla')
         const user = {
             name: loginName,
             pass: loginPass
         }
-        axios.post('http://localhost:4000/autentication', user).then(res => console.log(res))
+        const response = await axios.post('/api/gettoken', { name: loginName })
+        localStorage.setItem('token', response.data)
         socket.emit('login', user, socket.id)
         socket.on('login-atempt', (isSigned) => {
             if (isSigned) {
                 socket.emit('join-room', { name: 'sala principal' }, 'none', loginName)
                 socket.emit('user-joined-room-message', pathname, loginName)
                 store.dispatch(userName(loginName))
-                store.dispatch(logInOut(true)) //deberia estar en la store?                
+                store.dispatch(logInOut(true))
                 setLoginName("")
                 setLoginPass("")
             } else {
