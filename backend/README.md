@@ -25,9 +25,9 @@ I`m using hexagonal architecture and its organized with the following structure:
 * __Dist__ Typescript deploy
 * __Middlewares__  Middlewares for authentication, validation and cypher the passwords. 
 * __Room__
-    *   Domain: To handle the socket and provide types.
-    *   Repository: To acces the database.
-    *   Service: 
+    * __Domain__ To handle the socket and provide types.
+    * __Repository__ To acces the database.
+    * __Service__ 
 * __Server__ To both servers NodeJs and Socket.io.
 * __User__ 
     -   Domain: To handle the socket and provide types.
