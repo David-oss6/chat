@@ -22,6 +22,6 @@ A web token is generated and stored at the localstorage. Each time we navigate t
 If token resaults in any error or invalid the user wil be redirected to log in page.
 
 At the left column we can create and see the rooms.
-Only the room creator will be alloed to delete his room as long as its empty. If disconnected with users inside
-the ownership will be followed to next user who enetered the room.
+Only the room creator will be alloed to delete his room as long as it is empty. If disconnected with users inside
+the ownership will be passed on to the next user who enetered the room.
 
