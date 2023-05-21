@@ -14,7 +14,6 @@ Using React at the frontend separating the client and backend into two different
 -   MongoDB
 -   React
 
-
 ## Requirements
 
 To be able to use the chat you must have installed on your computer:

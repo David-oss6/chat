@@ -15,7 +15,7 @@ Have in mind the form will only accept letters and numbers. No repetead names wi
 
 ## Chat
 
-(./src/img/msg_room.png)
+![Formulari d'inici de sessió](./src/img/msg_room.png)
 <small>How the app looks</small>
 
 A web token is generated and stored at the localstorage. Each time we navigate through rooms the token will be verified.
