@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { JwtHandler } from "../middlware/JwtHandler"
+import { JwtHandler } from "../../middlware/JwtHandler"
 
 export const autentication = async (req: Request, res: Response) => {
     const jwtHandler = new JwtHandler()

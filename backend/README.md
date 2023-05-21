@@ -12,20 +12,22 @@ The server is using these dependecies:
 - `bcryptjs` 
 - `jsonwebtoke` 
 - `mongoDB` 
-- `socket.io` Per establir i mantenir les connexions a temps real amb el servidor client que permeten el xat.
+- `socket.io` 
 
 ## Architecture
 
 I`m using hexagonal architecture and its organized with the following structure:
 
-* __Controllers__ To handle the endpoints.
+* __Api__ To handle the petitions to the server
+    * __Controllers__ To handle the endpoints.
+    * __Router__ API routes
 * __Database__ Initializing and connecting with the database.
+* __Dist__ Typescript deploy
 * __Middlewares__  Middlewares for authentication, validation and cypher the passwords. 
 * __Room__
-    -   Domain: To handle the socket and provide types.
-    -   Repository: To acces the database.
-    -   Service: 
-* __Router__ API routes
+    *   Domain: To handle the socket and provide types.
+    *   Repository: To acces the database.
+    *   Service: 
 * __Server__ To both servers NodeJs and Socket.io.
 * __User__ 
     -   Domain: To handle the socket and provide types.
@@ -34,7 +36,7 @@ I`m using hexagonal architecture and its organized with the following structure:
 
 ## API
 
-Through the api I handle the server petitions of authentication and validation the user
+Through the api I handle the server petitions of authentication and validation of the user
 
 ## SOCKET
 

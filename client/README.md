@@ -6,7 +6,7 @@ Client server deveopled with React and based on React-redux to handle the app st
 
 Here starts the app:
 
-(./src/img/readme_login.png)
+![Formulari d'inici de sessió](./src/img/readme_login.png)
 <small>Sign in and log in form.</small>
 
 After sign in we can proceed to log in.

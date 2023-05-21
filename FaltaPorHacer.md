@@ -3,11 +3,12 @@ EN client:
 
 En Backend:
     ANYS:
-    
+- Carpeta API y meter dentro router y controladores?  
 -   en roomSocket linia 66
 
 README BACKEND
 
+-   linia 23, como se define Dist
 -   arquitectura hexagonal, copmo definir service (linia 26 )
+  
 
-- Carpeta API y meter dentro router y controladores?

@@ -1,9 +1,10 @@
-                            📟 Chat 📟
+📟 Chat 📟
 
 
 Chat developed with Javascript at the frontend and Typescript at the backend. 
-Using mainly [socket.io](https://socket.io/) and NodeJs at the backend. And MongoDB as a NoSQL database.
-Using React at the frontend separating the client and back-end into two different servers.
+Using mainly [socket.io](https://socket.io/) and NodeJs at the backend. 
+And MongoDB as a NoSQL database.
+Using React at the frontend separating the client and backend into two different servers.
 
 ## Technology used
 
@@ -42,11 +43,18 @@ To install the dependencies you need to install both the client and backend depe
 
     npm install
 
-Once installed, also separately, we will raise the two servers by executing the command respectively.
+Once installed, also separately, we will raise the two servers by executing the command at CHAT_REACT+TS/client directory: 
 
     npm start
 
-Through the client console we will see in which direction the server is and we will be able to connect to it from a browser.
+And executing at CHAT_REACT+TS/backend directory the commands:
+First to compile typescript:
+
+    npm tsc
+
+Second to execute the server:
+
+    npm start
 
 ## Characteristics
 
