@@ -120,7 +120,7 @@ export default function LoginSignin() {
                         onChange={(e) => setLoginPass(e.target.value)}
                         type="password"
                         placeholder='password' />
-                    <button className='logSignBtn'>Login</button>
+                    <button className='logSignBtn'>Log in</button>
                 </form>
                 {/* INICIO SIGN IN */}
                 <form className='logSingForms' onSubmit={(e) => {
