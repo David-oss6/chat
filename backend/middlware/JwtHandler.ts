@@ -2,9 +2,9 @@ import jwt from "jsonwebtoken"
 
 export class JwtHandler {
 
-  jwtSign(name: string) {
+  async jwtSign(name: string) {
     const secretKey: string = process.env.JWT_KEY!
-    const token = jwt.sign({ name }, secretKey, {
+    const token = await jwt.sign({ name }, secretKey, {
       expiresIn: '1d'
     })
     return token

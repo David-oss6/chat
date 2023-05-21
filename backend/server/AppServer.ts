@@ -45,7 +45,8 @@ export class AppServer {
 							"env"
 						)} mode`
 					);
-					console.log(`✅ ${!error && 'Socket running at port http://localhost:4040'}`)
+					console.log(`✅ Socket running at port http://localhost:4040`)
+					console.log(`✅ Database connected`)
 					// eslint-disable-next-line no-console
 					console.log("✋ Press CTRL-C to stop\n");
 					resolve();
