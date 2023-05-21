@@ -15,10 +15,9 @@ export default function LoginSignin() {
     const [signPass, setSignPass] = useState("")
     const [warningModal, setWarningModal] = useState(false)
     const [warninbgMsg, setWarningMsg] = useState("")
-
     const { pathname } = useLocation()
+
     const login = async () => {
-        socket.emit('bla-bla', 'bla-bla')
         const user = {
             name: loginName,
             pass: loginPass

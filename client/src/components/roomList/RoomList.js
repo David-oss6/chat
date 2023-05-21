@@ -35,15 +35,12 @@ export default function RoomList({ pathname }) {
     }
 
     const joinRoom = async (room) => {
-
         const webToken = localStorage.getItem('token')
         if (!webToken) store.dispatch(logInOut(false))
         const isTokenOk = await axios.get('/api/autentication', {
             headers: { 'Authorization': webToken }
         }).then((res) => res = res.data.name)
-        console.log(isTokenOk)
         if (isTokenOk === state.userName) {
-            console.log('entra en true')
             socket.emit('join-room', room, pathname, state.userName)
             socket.emit('user-joined-room-message', `/${room.name}`, state.userName)
         } else {
