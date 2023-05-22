@@ -36,6 +36,12 @@ Download this repository to your local computer. If you have GIT installed you c
 
 In the folder you just downloaded, go to backend directory. You will find a file called "_.env-template_". Make a copy of it, name it "_.env_" and complete the fields inside that belong to your system. Above all, configure the credentials of your Json web token (_JWT_KEY_)  and port (_PORT_).
 
+- To avoid CORS due to both localhosts when running the app:
+    *   In backend/router foler: remove '/api' from routes
+    *   In client/package.json remove the first line 'proxy'
+    *   In client/src/components/loginSignin/LoginSignin.js remove '/api' at line 25
+    *   In client/src/components/roomList/Roomlist.js remove '/api' at line 40
+
 ### Install dependencies
 
 To install the dependencies you need to install both the client and backend dependencies. From a terminal we place it in the folder_client_i_server_and execute, respectively, the order

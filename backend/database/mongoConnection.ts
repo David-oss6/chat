@@ -15,12 +15,13 @@ export const connectToDb = async (cb: Function) => {
     const dbNames = await client.db().admin().listDatabases()
     const databaseExists = dbNames.databases.some((db: any) => db.name === dbName)
     if (!databaseExists) {
-      // Create the database "chat" if it doesn't exist
+
+      // Create the database "dbName" if it doesn't exist
       await dbConnection.createCollection('rooms')
       await dbConnection.createCollection('users')
       const roomsCollection = dbConnection.collection<Room>('rooms')
       const usersCollection = dbConnection.collection<User>('users')
-      //  Insert the user object into the "users" collection
+      //  Insert the user adn main room collections
 
       try {
         await roomsCollection.insertOne({
@@ -42,10 +43,7 @@ export const connectToDb = async (cb: Function) => {
       } catch (error) {
         console.log(error)
       }
-
-
     }
-
     return cb()
   } catch (err) {
     console.log(err)
