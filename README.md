@@ -36,7 +36,6 @@ In the folder you just downloaded, go to backend directory. You will find a file
 
 ### If running in production:
 
-- To avoid CORS due to both localhosts when running the app:
     *   In backend/router foler: remove '/api' from routes
     *   In client/package.json remove the first line 'proxy'
     *   In client/src/components/loginSignin/LoginSignin.js remove '/api' at line 25
