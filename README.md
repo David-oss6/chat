@@ -36,14 +36,14 @@ In the folder you just downloaded, go to backend directory. You will find a file
 
 ### If running in production:
 
-    *   In backend/router foler: remove '/api' from routes
+    *   In backend/router foler remove '/api' from routes
     *   In client/package.json remove the first line 'proxy'
     *   In client/src/components/loginSignin/LoginSignin.js remove '/api' at line 25
     *   In client/src/components/roomList/Roomlist.js remove '/api' at line 40
 
 ### Install dependencies
 
-To install the dependencies you need to install both the client and backend dependencies. From a terminal we place it in the folder_client_i_server_and execute, respectively, the order
+To install the dependencies you need to install both the client and backend dependencies. From a terminal we place it in the folder _client_ and _backend_ and execute, respectively, the order
 
     npm install
 
