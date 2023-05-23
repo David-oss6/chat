@@ -11,14 +11,18 @@ export default function SendMsgBox({ pathname }) {
     if (pathname !== '/') path = pathname.slice(1)
 
     const sendMsg = (msg) => {
-        const newMessage = {
-            text: msg,
-            owner: state,
-            room: path
+        if (!msg.replace(/\s/g, '').length) {
+        } else {
+            const newMessage = {
+                text: msg,
+                owner: state,
+                room: path
+            }
+            socket.emit('send-msg', newMessage)
+            setMsg('')
         }
-        socket.emit('send-msg', newMessage)
-        setMsg('')
     }
+
     return (
         <form
             onSubmit={(e) => {

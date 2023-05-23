@@ -38,7 +38,7 @@ export default function LoginSignin() {
                 setTimeout(() => {
                     setWarningModal(false)
                     setWarningMsg("")
-                }, 3000)
+                }, 1500)
                 setWarningMsg("Usuario o contraseña incorrectos")
             }
         })
@@ -86,7 +86,6 @@ export default function LoginSignin() {
                 }
             })
         }
-
     }
 
     return (

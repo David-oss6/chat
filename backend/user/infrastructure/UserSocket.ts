@@ -1,20 +1,23 @@
 import { Socket } from 'socket.io'
 import { comparePassword, hashPassword } from '../../middlware/bcript'
-import { TUser } from './types'
-import { signIn } from '../service/signIn'
-import { logIn } from '../service/logIn'
-import { updateUser } from '../service/updateUser'
-import { getUser } from '../service/getUser'
-import { RoomSocket } from '../../room/domain/RoomSocket'
+import { User } from '../domain/entities/IUser'
+import { signIn } from '../application/use-cases/signIn'
+import { logIn } from '../application/use-cases/logIn'
+import { updateUser } from '../application/use-cases/updateUser'
+import { getUser } from '../application/use-cases/getUser'
+import { RoomSocket } from '../../room/infrastructure/RoomSocket'
+import { IUserRepository } from '../domain/repository/IUserRepository'
 
 export class UserSocket {
     socket: Socket
-    constructor(socket: Socket) {
+    userRepository: IUserRepository
+    constructor(socket: Socket, userRepository: IUserRepository) {
         this.socket = socket
+        this.userRepository = userRepository
     }
     async connect(roomSocket: RoomSocket) {
-        this.socket.on('login', async (user: TUser, socketId: string) => {
-            const isSigned: Object | null = await this.logIn(user, socketId)
+        this.socket.on('login', async (user: User, socketId: string) => {
+            const isSigned = await this.logIn(user, socketId)
             if (isSigned) {
                 const roomToJoin = await roomSocket.getRoom('/')
                 await roomSocket.joinRoom(roomToJoin, user.name)
@@ -27,7 +30,7 @@ export class UserSocket {
             this.socket.broadcast.emit('user-joined-room-message', location, message)
         })
 
-        this.socket.on('signin', async (newUser: TUser) => {
+        this.socket.on('signin', async (newUser: User) => {
             await this.signIn(newUser)
         })
 
@@ -37,21 +40,21 @@ export class UserSocket {
         })
     }
 
-    async signIn(newUser: TUser): Promise<void> {
+    async signIn(newUser: User): Promise<void> {
         newUser = {
             name: newUser.name,
             pass: await hashPassword(newUser.pass),
             socketId: ""
         }
-        const exists: object | null = await signIn(newUser)
+        const exists: User | null = await signIn(newUser, this.userRepository)
         this.socket.emit('sign-atempt', exists)
     }
 
-    async logIn(user: TUser, socketId: string) {
-        const isSigned = await logIn(user)
+    async logIn(user: User, socketId: string): Promise<boolean | null> {
+        const isSigned = await logIn(user, this.userRepository)
         if (isSigned) {
             const isMatch = await comparePassword(user.pass, isSigned.pass)
-            if (isMatch) await updateUser(user, socketId)
+            if (isMatch) await updateUser(user, socketId, this.userRepository)
             return isMatch
         }
         this.socket.emit('login-atempt', isSigned)
@@ -59,7 +62,7 @@ export class UserSocket {
     }
 
     async getUser(socketId: string) {
-        const userName = await getUser(socketId)
+        const userName = await getUser(socketId, this.userRepository)
         return userName
     }
 }

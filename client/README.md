@@ -22,6 +22,14 @@ A web token is generated and stored at the localstorage. Each time we navigate t
 If token resaults in any error or invalid the user wil be redirected to log in page.
 
 At the left column we can create and see the rooms.
-Only the room creator will be alloed to delete his room as long as it is empty. If disconnected with users inside
+Only the room creator will be allowed to delete his room as long as it is empty. If disconnected with users inside
 the ownership will be passed on to the next user who enetered the room.
+
+## Structure
+
+* __Components__ 
+    *   Each components has his own js and css file
+* __Context__ Where I handle the state of the application
+* __Img__  Middlewares for authentication, validation and cypher the passwords. 
+* __Index.js__
 

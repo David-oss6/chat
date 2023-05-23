@@ -1,5 +1,6 @@
 import { MongoClient, Db } from 'mongodb'
-import { Room, User } from './collectionsInterface'
+import { Room } from '../room/domain/entities/IRoom'
+import { User } from '../user/domain/entities/IUser'
 
 const dbName = 'chat3'
 const url = `mongodb://127.0.0.1:27017/${dbName}`

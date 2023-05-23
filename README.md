@@ -32,7 +32,7 @@ Download this repository to your local computer. If you have GIT installed you c
 
 ### Set the environment variables
 
-In the folder you just downloaded, go to backend directory. You will find a file called "_.env-template_". Make a copy of it, name it "_.env_" and complete the fields inside that belong to your system. Above all, configure the credentials of your Json web token (_JWT_KEY_)  and port (_PORT_).
+In the folder you just downloaded, go to backend directory. You will find a file called "_.env-template_". Make a copy of it, name it "_.env_" and complete the fields inside that belong to your system. Above all, configure the credentials of your Json web token (_JWT_KEY_) and port (_PORT_). Do not modify _ADMIN_PASS_ since is the default admin password.
 
 ### If running in production:
 
